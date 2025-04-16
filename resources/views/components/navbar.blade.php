@@ -5,7 +5,7 @@
             <!-- <span class="navbar-toggler-icon"></span> -->
             <i class="text-white fa-solid fa-bars"></i>
         </button>
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="{{ route('home') }}">
             <img class="navbar-icon" src="{{ asset('assets/img/codeflix_logo.png') }}" alt="">
         </a>
         <div class="collapse navbar-collapse" id="navbarTogglerDemo03">

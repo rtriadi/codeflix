@@ -33,7 +33,7 @@ class MovieController extends Controller implements HasMiddleware
 
     public function all(Request $request)
     {
-        $movies = Movie::orderBy('release_date', 'desc')->paginate(8);
+        $movies = Movie::orderBy('release_date', 'desc')->paginate(10);
         if ($request->ajax()) {
             $html = view('components.movie-list', compact('movies'))->render();
             return response()->json([
