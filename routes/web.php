@@ -6,9 +6,7 @@ use App\Http\Controllers\SubscribeController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [MovieController::class, 'index']);
 
 Route::get('/subscribe/plans', [SubscribeController::class, 'showPlans'])->name('subscribe.plans');
 Route::get('/subscribe/plan/{plan}', [SubscribeController::class, 'checkoutPlan'])->name('subscribe.checkout');
@@ -17,9 +15,6 @@ Route::get('/subscribe/success', [SubscribeController::class, 'showSuccess'])->n
 
 // Route::post('/checkout', [TransactionController::class, 'checkout'])->name('checkout');
 
-// Route::get('/home', function () {
-//     return view('movies.index');
-// })->middleware('auth', 'check.device.limit')->name('home');
 Route::get('/home', [MovieController::class, 'index'])->name('home');
 Route::get('/movies', [MovieController::class, 'all'])->name('movies.index');
 Route::get('/movies/search', [MovieController::class, 'search'])->name('movies.search');
@@ -32,10 +27,9 @@ Route::post('/logout', function (Request $request) {
 })->middleware(['auth', 'logout.device'])->name('logout');
 
 
-/* Route::get('/text-expired', function () {
+Route::get('/text-expired', function () {
     $membership = \App\Models\Membership::find(1);
     event(new \App\Events\MembershipHasExpired($membership));
 
     return 'Event fired';
 });
- */
